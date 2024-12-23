@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Il Matrimonio di Sara e Matteo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e7dfc8ff; /* Beige */
+            color: #333;
+        }
+        
+        p {
+            margin: 0; /* Riduce l'interlinea */
+        }
+
+        /* Barra di navigazione */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Sfondo semitrasparente */
+            padding: 10px 0;
+            z-index: 10;
+            text-align: center;
+        }
+
+        nav a {
+            color: #e7dfc8ff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            display: flex;
+            align-items: center; /* Centra verticalmente il contenuto */
+            justify-content: center; /* Centra orizzontalmente il contenuto */
+            height: 100vh; /* Altezza pari a tutta la finestra */
+            color: white; /* Colore del testo */
+            text-align: center; /* Allinea il testo */
+            position: relative;
+
+            a:link {
+                color: black;
+                background-color: transparent;
+                text-decoration: underline;
+            }
+
+            a:visited {
+                color: black;
+                background-color: transparent;
+                text-decoration: underline;
+            }
+
+            a:hover {
+                color: black;
+                background-color: rgba(0, 0, 0, 0.1);
+                text-decoration: underline;
+            }
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover; /* Ritaglia l'immagine per coprire tutta l'area */
+            z-index: 1;
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: row; /* Disposizione orizzontale */
+            align-items: center; /* Allinea verticalmente */
+            justify-content: space-between; /* Spaziatura tra immagine e testo */
+            height: 100vh; /* Altezza pari alla finestra */
+            padding: 0px; /* Spaziatura intorno al contenitore */
+        }
+
+        .hero img {
+            flex: 1; /* Occupa una parte del contenitore */
+            max-width: 50%; /* L'immagine occupa al massimo il 45% */
+            height: auto; /* Mantiene le proporzioni */
+            margin-right: 0px; /* Spaziatura a destra */
+        }
+
+        .hero .content {
+            flex: 1; /* Il testo occupa la stessa quantità di spazio */
+            max-width: 50%; /* Massima larghezza del contenuto */
+            padding: 40px; /* Spaziatura interna */
+            text-align: center; /* Allinea il testo */
+            color: #333; /* Colore del testo */
+            background-image: url('background_website.jpg'); /* Immagine di sfondo */
+            background-size: cover; /* Adatta l'immagine all'area del contenitore */
+            background-repeat: no-repeat; /* Evita la ripetizione dell'immagine */
+            background-position: center; /* Centra l'immagine */
+            height: 100vh; /* L'altezza occupa l'intera finestra */
+            display: flex; /* Layout flessibile per il contenuto */
+            align-items: center; /* Centra il testo verticalmente */
+            justify-content: center; /* Centra il testo orizzontalmente */
+            flex-direction: column; /* Stack items vertically */
+        }
+
+        .hero .content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(231, 223, 200, 0.7); /* Colore e opacità */
+            z-index: 1; /* Posiziona l'overlay dietro il testo */
+        }
+
+        .hero .content > * {
+            position: relative; /* Mantiene il testo sopra l'overlay */
+            z-index: 2;
+        }
+        
+        .dettagli { background-image: url('dettagli.jpg'); }
+        .dettagli::before { background: rgba(0, 0, 0, 0.3); }
+
+        .come-arrivare { background-image: url('come-arrivare.jpg'); }
+        .come-arrivare::before { background: rgba(0, 0, 0, 0.3); }
+
+        .lista-nozze { background-image: url('lista-nozze.jpg'); }
+        .lista-nozze::before { background: rgba(0, 0, 0, 0.3); }
+
+        .countdown { background-image: url('countdown.jpg'); }
+        .countdown::before { background: rgba(0, 0, 0, 0.4); }
+
+        section .content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 3em; /* Titolo grande */
+            margin-bottom: 10px;
+        }
+
+        section p {
+            font-size: 1.5em; /* Testo leggibile */
+            line-height: 1.6;
+        }
+
+        /* Media Queries for Responsive Design */
+        @media (max-width: 768px) {
+            nav a {
+                font-size: 1em;
+                margin: 0 10px;
+            }
+
+            section {
+                flex-direction: column;
+                height: auto;
+                padding: 40px 20px;
+            }
+
+            .content h2 {
+                font-size: 2em;
+            }
+
+            .content p {
+                font-size: 1em;
+                line-height: 1.4;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav a {
+                font-size: 0.9em;
+                margin: 0 5px;
+            }
+
+            .content h2 {
+                font-size: 1.8em;
+            }
+
+            .content p {
+                font-size: 0.9em;
+                line-height: 1.3;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#hero">Home</a>
+    <a href="#dettagli">Dettagli</a>
+    <a href="#come-arrivare">Come Arrivare</a>
+    <a href="#lista-nozze">Lista Nozze</a>
+    <a href="#countdown">Countdown</a>
+    <a href="#ci_sarai">Ci sarai?</a>
+</nav>
+
+<section id="hero" class="hero">
+    <img src="foto-coppia.jpg" alt="Foto della coppia">
+    <div class="content">
+        <h2>Sara & Matteo</h2>
+        <p>Ci sposiamo!</p><br>
+        <p>14 Giugno 2025</p>
+        <p>Rocca D'Ajello, Camerino (MC)</p>
+        <p>Ciao! Hello! Hola! Hallo! Tere! Oi! Merhaba! Bella fra!</p>
+        <p>Ebbene sì, ci sposiamo!</p>
+        <p>Chi ce lo fa fare? Nessuno, ma con questa scusa vogliamo fare una grande festa e vogliamo che voi ne siate parte!</p>
+        <p>Il matrimonio sarà in un'unica location: al castello di Rocca d'Ajello, a Camerino, nelle Marche, perciò consigliamo di organizzarsi per tempo con gli spostamenti: vedi la sezione come arrivare per altre informazioni.</p>
+        <p>Nella sezione Ci sarai? puoi confermare se vieni o no al matrimonio, facci sapere appena saprai così che possiamo pelare il numero giusto di patate.</p>
+        <p>P.S.: Se avevate i biglietti del concerto di Ed Sheeran, beh, ci dispiace ma non prevediamo rimborsi. Ed ha detto che non può muoverlo perché il 15 sarà alla sagra della patata di Filettino (FR).</p>
+    </div>
+</section>
+
+<section id="dettagli" class="hero">
+    <div class="content">
+        <h2>Dettagli del Matrimonio</h2>
+        <p><strong>Luogo:</strong> Rocca d'Ajello, Camerino (MC)</p>
+        <p><strong>Data:</strong> 14 Giugno 2025</p>
+        <p><strong>Orario:</strong> 17:00</p>
+        <p>La cerimonia e il ricevimento si terranno nello stesso luogo. Non vediamo l'ora di festeggiare con voi!</p>
+    </div>
+    <img src="foto_coppia_2.jpeg" alt="Foto della coppia">
+</section>
+
+<section id="come-arrivare" class="hero">
+    <img src="come_arrivare.jpeg" alt="Foto della coppia">
+    <div class="content">
+        <h2>Come Arrivare</h2>
+        <p>Il Castello di Rocca d'Ajello è a Camerino (MC), nelle Marche. Come ogni castello che si rispetti arrivarci non è semplicissimo!</p>
+        <p>La strada è tortuosa e percorribile solo in cavallo, carrozza o automobile.</p>
+        <p>Organizzeremo anche qualche trasporto per chi arriva da fuori, contattateci per i dettagli!</p>
+        <p><a href="https://maps.app.goo.gl/3Cy71Ro7fiGTa94P6">Castello di rocca d'ajello <br> 62032 Camerino, Macerata</a></p>
+    </div>
+</section>
+
+<section id="lista-nozze" class="hero">
+    <div class="content">
+        <h2>Lista Nozze</h2>
+        <p>Il regalo più grande è la vostra presenza! Se volete contribuire, abbiamo creato una lista nozze presso:</p>
+        <ul>
+            <li><strong>Negozio ABC:</strong> Visitate il sito <a href="https://www.negozioabc.it" target="_blank" style="color: white;">www.negozioabc.it</a></li>
+            <li><strong>Conto bancario:</strong> IBAN IT00X0000000000000000000000</li>
+        </ul>
+    </div>
+    <img src="lista_nozze.jpeg" alt="Foto della coppia">
+</section>
+
+<section id="countdown" class="hero">
+    <img src="countdown.jpeg" alt="Foto della coppia">
+    <div class="content">
+        <h2>Countdown al grande giorno</h2>
+        <div id="countdown-timer">
+            Calcolando il tempo rimanente...
+        </div>
+    </div>
+</section>
+
+<section id="ci_sarai" class="hero">
+    <div class="content">
+        <h2>Ci sarai?</h2>
+        <p>Scrivi se ci sarai:</p>
+    </div>
+</section>
+
+<script>
+    // Funzione per calcolare il tempo rimanente
+    function updateCountdown() {
+        const weddingDate = new Date("June 14, 2025 17:00:00").getTime();
+        const now = new Date().getTime();
+        const timeRemaining = weddingDate - now;
+
+        if (timeRemaining > 0) {
+            const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown-timer").innerHTML = 
+                `${days} giorni, ${hours} ore, ${minutes} minuti e ${seconds} secondi`;
+        } else {
+            document.getElementById("countdown-timer").innerHTML = "Il grande giorno è arrivato!";
+        }
+    }
+
+    // Aggiorna il countdown ogni secondo
+    setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>
