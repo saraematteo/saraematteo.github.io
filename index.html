@@ -10,12 +10,20 @@
             font-family: 'MyLove';
             src: url('fonts/MyLove.ttf') format('truetype');
         }
+        @font-face {
+            font-family: 'Sketch Gothic School';
+            src: url('fonts/Sketch Gothic School.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'New September';
+            src: url('fonts/New September.otf') format('truetype');
+        }
 
         html {
             scroll-behavior: smooth;
         }
         body {
-            font-family: 'MyLove', sans-serif;
+            font-family: 'New September', sans-serif;
             font-size: 15px;
             margin: 0;
             padding: 0;
@@ -145,7 +153,7 @@
             z-index: 2;
         }
 
-        .hero .content_2 {
+        .hero .form {
             flex: 1; /* Il testo occupa la stessa quantità di spazio */
             max-width: 50%; /* Massima larghezza del contenuto */
             padding: 40px; /* Spaziatura interna */
@@ -183,8 +191,8 @@
         }
 
         section p {
-            font-size: 1.5em; /* Testo leggibile */
-            line-height: 1.6;
+            font-size: 2em; /* Testo leggibile */
+            line-height: 1.5;
         }
 
         /* Media Queries for Responsive Design */
@@ -280,11 +288,9 @@
 <section id="lista-nozze" class="hero">
     <div class="content">
         <h2>Lista Nozze</h2>
-        <p>Il regalo più grande è la vostra presenza! Se volete contribuire, abbiamo creato una lista nozze presso:</p>
-        <ul>
-            <li><strong>Negozio ABC:</strong> Visitate il sito <a href="https://www.negozioabc.it" target="_blank" style="color: white;">www.negozioabc.it</a></li>
-            <li><strong>Conto bancario:</strong> IBAN IT00X0000000000000000000000</li>
-        </ul>
+        <p>Il regalo più grande è la vostra presenza!</p>
+        <p>Ma anche la nostra luna di miele!</p>
+        <p><strong>Potete donare a:</strong> IBAN IT87S0347501605CC0012822426</p>
     </div>
     <img src="lista_nozze.jpeg" alt="Foto della coppia">
 </section>
@@ -294,17 +300,18 @@
     <div class="content">
         <h2>Countdown al grande giorno</h2>
         <div id="countdown-timer">
-            Calcolando il tempo rimanente...
+            <p>Calcolando il tempo rimanente...</p>
         </div>
+        <p>(No pressure...!)</p>
     </div>
 </section>
 
 <section id="ci_sarai" class="hero">
     <div class="content">
         <h1>RSVP - Conferma la tua presenza</h1>
-            <p>Compila il modulo qui sotto per confermare la tua presenza al nostro matrimonio.</p>
+            <p>Compila il modulo per confermare la tua presenza!</p>
     </div>
-    <div class="content_2">
+    <div class="form">
         <!-- Embed Google Form -->
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfXAraxi83cIRxfU2mjrv4IEM5tqFiVgJX01f5oucu4Na5DFQ/viewform?embedded=true" 
         width="90%" 
@@ -320,18 +327,31 @@
 <script>
     // Funzione per calcolare il tempo rimanente
     function updateCountdown() {
-        const weddingDate = new Date("June 14, 2025 17:00:00").getTime();
-        const now = new Date().getTime();
-        const timeRemaining = weddingDate - now;
+        const weddingDate = new Date("June 14, 2025 17:00:00")
+        const weddingTime = weddingDate.getTime();
+        const now = new Date()
+        const nowTime = now.getTime();
+        if (now.getMonth() > 6) {
+            months = weddingDate.getMonth() + 12 - now.getMonth()
+        }
+        else {
+            months = weddingDate.getMonth() - now.getMonth();
+        }
+        days = weddingDate.getDate() - now.getDate()
+        if (days < 0) {
+            months -= 1; // Correggi il mese se il giorno attuale è maggiore
+            days = days + 31
+        }
+        const timeRemaining = weddingTime - nowTime;
 
         if (timeRemaining > 0) {
-            const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+            /*const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));*/
             const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
 
             document.getElementById("countdown-timer").innerHTML = 
-                `${days} giorni, ${hours} ore, ${minutes} minuti e ${seconds} secondi`;
+                `<p>${months} mesi, ${days} giorni, ${hours} ore, ${minutes} minuti e ${seconds} secondi</p>`;
         } else {
             document.getElementById("countdown-timer").innerHTML = "Il grande giorno è arrivato!";
         }
