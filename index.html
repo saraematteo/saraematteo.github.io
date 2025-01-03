@@ -41,14 +41,18 @@
 
         /* Barra di navigazione */
         nav {
+            display: flex;
             position: fixed;
+            align-items: center;
+            justify-content: center; /* Spaziatura uniforme tra i link */
             top: 0;
             width: 100%;
 /*            background-color: rgba(0, 0, 0, 1); /* Sfondo semitrasparente */
             background-color: #e7dfc8ff; /*#e2d2b6b3; /* Sfondo semitrasparente */
-            padding: 20px 0;
+            padding: 0px;
             z-index: 10;
             text-align: center;
+            height: 8vh;
         }
 
         nav a {
@@ -68,11 +72,15 @@
         section {
             display: flex;
             align-items: center; /* Centra verticalmente il contenuto */
-            justify-content: center; /* Centra orizzontalmente il contenuto */
-            height: 100vh; /* Altezza pari a tutta la finestra */
+/*            justify-content: center; /* Centra orizzontalmente il contenuto */
+            height: 92vh; /* Altezza pari a tutta la finestra */
             color: white; /* Colore del testo */
             text-align: center; /* Allinea il testo */
             position: relative;
+            flex-direction: row; /* Disposizione orizzontale */
+            justify-content: space-between; /* Spaziatura tra immagine e testo */
+            padding: 0px; /* Spaziatura intorno al contenitore */
+            scroll-margin-top: 8vh; /* Aggiunge un margine nello scroll */
 
             a:link {
                 color: black;
@@ -104,23 +112,18 @@
             z-index: 1;
         }
 
-        .hero {
-            display: flex;
-            flex-direction: row; /* Disposizione orizzontale */
-            align-items: center; /* Allinea verticalmente */
-            justify-content: space-between; /* Spaziatura tra immagine e testo */
-            height: 100vh; /* Altezza pari alla finestra */
-            padding: 0px; /* Spaziatura intorno al contenitore */
+        .home {
+            margin-top: 8vh;
         }
 
-        .hero img {
+        section img {
             flex: 1; /* Occupa una parte del contenitore */
             max-width: 50%; /* L'immagine occupa al massimo il 45% */
             height: auto; /* Mantiene le proporzioni */
             margin-right: 0px; /* Spaziatura a destra */
         }
 
-        .hero .content {
+        section .content {
             flex: 1; /* Il testo occupa la stessa quantità di spazio  */
             max-width: 50%; /* Massima larghezza del contenuto */
 /*            padding: 40px; /* Spaziatura interna */
@@ -130,14 +133,17 @@
             background-position: center; /* Centra l'immagine */
  /*           text-align: center; /* Allinea il testo*/ 
             color: #463829; /* Colore del testo */           
-            height: 100vh; /* L'altezza occupa l'intera finestra */
+            height: 100%; /* L'altezza occupa l'intera finestra */
             display: flex; /* Layout flessibile per il contenuto */
             align-items: center; /* Centra il testo verticalmente */
             justify-content: center; /* Centra il testo orizzontalmente */
             flex-direction: column; /* Stack items vertically */
+            position: relative;
+            z-index: 2;
+            margin: 0 auto;
         }
 
-        .hero .content::before {
+        section .content::before {
             content: '';
             position: absolute;
             top: 0;
@@ -148,24 +154,35 @@
             z-index: 1; /* Posiziona l'overlay dietro il testo */
         }
 
-        .hero .content > * {
+        section .content > * {
             position: relative; /* Mantiene il testo sopra l'overlay */
             z-index: 2;
         }
 
-        .hero .form {
+        section .form {
             flex: 1; /* Il testo occupa la stessa quantità di spazio */
             max-width: 50%; /* Massima larghezza del contenuto */
             padding: 40px; /* Spaziatura interna */
             text-align: center; /* Allinea il testo */
-            color: #333; /* Colore del testo */
-            height: 100vh; /* L'altezza occupa l'intera finestra */
+            color: #463829; /* Colore del testo */
+            max-height: 100vh; /* L'altezza occupa l'intera finestra */
             display: flex; /* Layout flessibile per il contenuto */
             align-items: center; /* Centra il testo verticalmente */
             justify-content: center; /* Centra il testo orizzontalmente */
             flex-direction: column; /* Stack items vertically */
         }
-        
+
+        section .iframe {
+            flex: 1; /* Il testo occupa la stessa quantità di spazio */
+            width: 100000px;
+            max-width: 90%;
+            padding: 0px; /* Spaziatura interna */
+            text-align: center; /* Allinea il testo */
+            color: #463829; /* Colore del testo */
+            height: 100000px;
+            max-height: 90%;
+        }
+
         .dettagli { background-image: url('dettagli.jpg'); }
         .dettagli::before { background: rgba(0, 0, 0, 0.3); }
 
@@ -178,12 +195,12 @@
         .countdown { background-image: url('countdown.jpg'); }
         .countdown::before { background: rgba(0, 0, 0, 0.4); }
 
-        section .content {
+        /*section .content {
             position: relative;
             z-index: 2;
             max-width: 800px;
             margin: 0 auto;
-        }
+        }*/
 
         section h2 {
             font-size: 3em; /* Titolo grande */
@@ -218,6 +235,66 @@
             }
         }
 
+        /* Media Queries for Responsive Design */
+        @media (max-width: 1040px) {
+            nav {
+                height: 5vh;
+            }
+
+            nav a {
+                font-size: 50px;
+                margin: 0 10px;
+            }
+
+            section {
+                height: auto;
+                display: flex;
+                flex-direction: column; /* Cambia la disposizione verticale sui telefoni */
+                align-items: center;
+                justify-content: center;
+                padding: 0px;
+                height: 95vh; /* Consenti altezza variabile */
+                scroll-margin-top: 5vh; /* Aggiunge un margine nello scroll */
+            }
+
+            .content h2 {
+                font-size: 2em;
+            }
+
+            .content p {
+                font-size: 1em;
+                line-height: 1.4;
+            }
+
+            .home {
+                margin-top: 5vh;
+            }
+
+            section img {
+                flex: 1;
+                max-width: 100%; /* L'immagine occupa al massimo il 45% */
+                width: 100%;
+                max-height: 60%;
+                height:auto;
+                object-fit: cover; /* Riempi il contenitore, tagliando se necessario */
+            }
+
+            section .content {
+                max-width: 100%; /* Riduci la larghezza del testo su schermi piccoli */
+                font-size: 50px; /* Riduci la dimensione del testo */
+                line-height: 1.5; /* Aumenta la leggibilità */
+            }
+
+            section .iframe {
+                flex: 1; /* Il testo occupa la stessa quantità di spazio */
+                width: 100000px;
+                padding: 0px; /* Spaziatura interna */
+                text-align: center; /* Allinea il testo */
+                color: #463829; /* Colore del testo */
+                height: 100000px;
+            }
+        }
+
         @media (max-width: 480px) {
             nav a {
                 font-size: 0.9em;
@@ -238,15 +315,18 @@
 <body>
 
 <nav>
-    <a href="#hero">Home</a>
+    <a href="#home">Home</a>
     <a href="#dettagli">Dettagli</a>
     <a href="#come-arrivare">Come Arrivare</a>
     <a href="#lista-nozze">Lista Nozze</a>
     <a href="#countdown">Countdown</a>
     <a href="#ci_sarai">Ci sarai?</a>
 </nav>
+<!-- 
+<section id="ghostnav" class="ghostnav">
+</section> -->
 
-<section id="hero" class="hero">
+<section id="home" class="home">
     <img src="foto-coppia.jpg" alt="Foto della coppia">
     <div class="content">
         <h2>Sara & Matteo</h2>
@@ -306,19 +386,15 @@
     </div>
 </section>
 
-<section id="ci_sarai" class="hero">
-    <div class="content">
+<section id="ci_sarai" class="frame">
+    <div class="content" height=40%>
         <h2>RSVP - Conferma la tua presenza</h2>
-        <p>Compila il modulo per confermare la tua presenza!</p>
+            <p>Compila il modulo e clicca invia per confermare la tua presenza!</p>
     </div>
-    <div class="form">
-        <!-- Embed Google Form -->
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfXAraxi83cIRxfU2mjrv4IEM5tqFiVgJX01f5oucu4Na5DFQ/viewform?embedded=true" 
-        width="90%" 
-        height="80%" 
+    <div class="content">
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfXAraxi83cIRxfU2mjrv4IEM5tqFiVgJX01f5oucu4Na5DFQ/viewform?embedded=true" 
         frameborder="0" 
-        marginheight="0" 
-        marginwidth="0">
+        class='iframe'>
         Caricamento…
         </iframe>
     </div>
