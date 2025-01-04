@@ -36,7 +36,8 @@
         }
 
         div {
-            padding: 0px 50px 0px 50px;
+            padding: 0vh 5vw 0px 5vw;
+            overflow: hidden;
         }
 
         /* Barra di navigazione */
@@ -52,16 +53,16 @@
             padding: 0px;
             z-index: 10;
             text-align: center;
-            height: 8vh;
+            height: calc(2vmin + 3vmax);
         }
 
         nav a {
 /*            color: #e7dfc8ff;*/
 /*            color: rgba(0, 0, 0, 1);*/
             color: #463829;
-            margin: 0 15px;
+            margin: 0 1vw;
             text-decoration: none;
-            font-size: 50px;
+            font-size: calc(2vmin + 2vmax);
             font-weight: none;
             font-family: 'MyLove';
         }
@@ -69,18 +70,23 @@
             text-decoration: underline;
         }
 
+        nav a:scroll {
+             text-decoration: underline;
+             /* add other style if you want. */
+        }
+
         section {
             display: flex;
             align-items: center; /* Centra verticalmente il contenuto */
 /*            justify-content: center; /* Centra orizzontalmente il contenuto */
-            height: 92vh; /* Altezza pari a tutta la finestra */
+            height: calc(100vh - 2vmin - 3vmax); /* Altezza pari a tutta la finestra */
             color: white; /* Colore del testo */
             text-align: center; /* Allinea il testo */
             position: relative;
             flex-direction: row; /* Disposizione orizzontale */
             justify-content: space-between; /* Spaziatura tra immagine e testo */
             padding: 0px; /* Spaziatura intorno al contenitore */
-            scroll-margin-top: 8vh; /* Aggiunge un margine nello scroll */
+            scroll-margin-top: calc(2vmin + 3vmax); /* Aggiunge un margine nello scroll */
 
             a:link {
                 color: black;
@@ -113,7 +119,7 @@
         }
 
         .home {
-            margin-top: 8vh;
+            margin-top: calc(2vmin + 3vmax);
         }
 
         section img {
@@ -140,7 +146,7 @@
             flex-direction: column; /* Stack items vertically */
             position: relative;
             z-index: 2;
-            margin: 0 auto;
+            margin: 0 0;
         }
 
         section .content::before {
@@ -159,27 +165,14 @@
             z-index: 2;
         }
 
-        section .form {
-            flex: 1; /* Il testo occupa la stessa quantità di spazio */
-            max-width: 50%; /* Massima larghezza del contenuto */
-            padding: 40px; /* Spaziatura interna */
-            text-align: center; /* Allinea il testo */
-            color: #463829; /* Colore del testo */
-            max-height: 100vh; /* L'altezza occupa l'intera finestra */
-            display: flex; /* Layout flessibile per il contenuto */
-            align-items: center; /* Centra il testo verticalmente */
-            justify-content: center; /* Centra il testo orizzontalmente */
-            flex-direction: column; /* Stack items vertically */
-        }
-
         section .iframe {
             flex: 1; /* Il testo occupa la stessa quantità di spazio */
-            width: 100000px;
+            width: 100vw;
             max-width: 90%;
             padding: 0px; /* Spaziatura interna */
             text-align: center; /* Allinea il testo */
             color: #463829; /* Colore del testo */
-            height: 100000px;
+            height: 100vh;
             max-height: 90%;
         }
 
@@ -193,7 +186,7 @@
         .lista-nozze::before { background: rgba(0, 0, 0, 0.3); }
 
         .countdown { background-image: url('countdown.jpg'); }
-        .countdown::before { background: rgba(0, 0, 0, 0.4); }
+        .countdown::before { background: rgba(0, 0, 0, 0.3); }
 
         /*section .content {
             position: relative;
@@ -203,112 +196,75 @@
         }*/
 
         section h2 {
-            font-size: 3em; /* Titolo grande */
-            margin-bottom: 10px;
+            font-size: calc(3vh + 2vw); /* Titolo grande */
+            margin-bottom: 1.5vh;
         }
 
         section p {
-            font-size: 2em; /* Testo leggibile */
-            line-height: 1.5;
+            font-size: calc(2vh + 1vw); /* Testo leggibile */
+            line-height: calc(2vh + 1vw);
         }
 
         /* Media Queries for Responsive Design */
-        @media (max-width: 768px) {
+        @media (max-aspect-ratio: 1) {
+            /*nav {
+                height: calc(2vmin + 2vmax);
+            }*/
+
             nav a {
-                font-size: 1em;
-                margin: 0 10px;
+                font-size: calc(3vmin + 1vmax);
+                margin: 0 .5vmin;
             }
 
             section {
-                flex-direction: column;
-                height: auto;
-                padding: 40px 20px;
-            }
-
-            .content h2 {
-                font-size: 2em;
-            }
-
-            .content p {
-                font-size: 1em;
-                line-height: 1.4;
-            }
-        }
-
-        /* Media Queries for Responsive Design */
-        @media (max-width: 1200px) {
-            nav {
-                height: 5vh;
-            }
-
-            nav a {
-                font-size: 50px;
-                margin: 0 10px;
-            }
-
-            section {
-                height: auto;
-                display: flex;
                 flex-direction: column; /* Cambia la disposizione verticale sui telefoni */
-                align-items: center;
-                justify-content: center;
-                padding: 0px;
-                height: 95vh; /* Consenti altezza variabile */
-                scroll-margin-top: 5vh; /* Aggiunge un margine nello scroll */
+                /*height: calc(100vh - 2vmin - 2vmax);
+                scroll-margin-top: calc(2vmin + 2vmax);*/
             }
 
-            .content h2 {
-                font-size: 2em;
+            /*.content h2 {
+                font-size: 2vh;
             }
 
             .content p {
-                font-size: 1em;
-                line-height: 1.4;
-            }
+                font-size: 1.5vh;
+                line-height: 1.5vh;
+            }*/
 
             .home {
-                margin-top: 5vh;
+                /*margin-top: calc(2vmin + 2vmax);*/
             }
 
             section img {
-                flex: 1;
-                max-width: 100%; /* L'immagine occupa al massimo il 45% */
+                max-width: 100%;
                 width: 100%;
-                max-height: 60%;
-                height:auto;
+                max-height: 55%;
                 object-fit: cover; /* Riempi il contenitore, tagliando se necessario */
             }
 
             section .content {
                 max-width: 100%; /* Riduci la larghezza del testo su schermi piccoli */
-                font-size: 50px; /* Riduci la dimensione del testo */
-                line-height: 1.5; /* Aumenta la leggibilità */
+                justify-content: center; /* Centra il testo orizzontalmente */
             }
 
-            section .iframe {
-                flex: 1; /* Il testo occupa la stessa quantità di spazio */
-                width: 100000px;
-                padding: 0px; /* Spaziatura interna */
-                text-align: center; /* Allinea il testo */
-                color: #463829; /* Colore del testo */
-                height: 100000px;
+            .content br {
+               display: block;
+               content: "";
+               margin-bottom: 2vh;
             }
         }
 
-        @media (max-width: 480px) {
-            nav a {
-                font-size: 0.9em;
-                margin: 0 5px;
-            }
+        @media (max-aspect-ratio: 1) {
 
-            .content h2 {
-                font-size: 1.8em;
+            /*.content h2 {
+                font-size: 2.5vh;
+                margin-bottom: 1vh;
             }
 
             .content p {
-                font-size: 0.9em;
-                line-height: 1.3;
-            }
+                font-size: 1.5vh;
+                line-height: 1.5vh;
+            }*/
         }
     </style>
 </head>
@@ -331,15 +287,15 @@
     <div class="content">
         <h2>Sara & Matteo</h2>
         <p>Ci sposiamo!</p>
-        <br>
         <p>14 Giugno 2025</p>
         <p>Rocca D'Ajello, Camerino (MC)</p>
-        <p>Ciao! Hello! Hola! Hallo! Tere! Oi! Merhaba! Bella fra!</p>
-        <p>Ebbene sì, ci sposiamo!</p>
+        <br>
+<!--         <p>Ciao! Hello! Hola! Hallo! Tere! Oi! Merhaba! Bella fra!</p>
+        <p>Ebbene sì, ci sposiamo!</p> -->
         <p>Chi ce lo fa fare? Nessuno, ma con questa scusa vogliamo fare una grande festa e vogliamo che voi ne siate parte!</p>
 <!--         <p>Il matrimonio sarà in un'unica location: al castello di Rocca d'Ajello, a Camerino, nelle Marche, perciò consigliamo di organizzarsi per tempo con gli spostamenti: vedi la sezione come arrivare per altre informazioni.</p> -->
-        <p>Nella sezione Ci sarai? puoi confermare se vieni o no al matrimonio, facci sapere appena saprai così che possiamo pelare il numero giusto di patate.</p>
-        <p>P.S.: Se avevate i biglietti del concerto di Ed Sheeran, beh, ci dispiace ma non prevediamo rimborsi. Ed ha detto che non può muoverlo perché il 15 sarà alla sagra della patata di Filettino (FR).</p>
+        <p>Nella sezione "Ci sarai?" puoi confermare la tua presenza, facci sapere! <!-- appena saprai così che possiamo pelare il numero giusto di patate. --></p>
+        <p>P.S.: Se avevate i biglietti del concerto di Ed Sheeran, beh, ci dispiace ma non prevediamo rimborsi.<!--  Ed ha detto che non può muoverlo perché il 15 sarà alla sagra della patata di Filettino (FR). --></p>
     </div>
 </section>
 
@@ -394,7 +350,7 @@
     <div class="content">
     <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfXAraxi83cIRxfU2mjrv4IEM5tqFiVgJX01f5oucu4Na5DFQ/viewform?embedded=true" 
         frameborder="0" 
-        class='iframe'>
+        class="iframe">
         Caricamento…
         </iframe>
     </div>
