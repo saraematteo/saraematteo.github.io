@@ -56,6 +56,26 @@
             height: calc(2vmin + 3vmax);
         }
 
+        /* Pulsante menu toggle */
+        .menu-toggle {
+            display: none; /* Nascosto di default sui dispositivi desktop */
+            font-size: calc(2vmin + 2vmax);
+            cursor: pointer;
+        }
+
+        /* Menu links */
+        .menu-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: calc(2vmin + 1.5vmax);
+            text-decoration: none;
+            color: #333;
+            display: none; /* Mostrato solo su mobile */
+        }
+
         nav a {
 /*            color: #e7dfc8ff;*/
 /*            color: rgba(0, 0, 0, 1);*/
@@ -207,9 +227,47 @@
 
         /* Media Queries for Responsive Design */
         @media (max-aspect-ratio: 1) {
-            /*nav {
-                height: calc(2vmin + 2vmax);
-            }*/
+            nav {
+                justify-content: space-between;
+            }
+
+            .menu-toggle {
+                display: block; /* Mostra il toggle su dispositivi mobili */
+            }
+
+            .menu-links {
+                display: none; /* Nascondi i link inizialmente */
+                flex-direction: column; /* Disposizione verticale dei link */
+                position: absolute;
+                top: 100%; /* Subito sotto la navbar */
+                left: 0;
+                width: 100%;
+                background-color: #e7dfc8ff; /* Sfondo del menu */
+                padding: 10px 0;
+                text-align: center;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .menu-links a {
+                padding: 10px 0;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Divisori tra i link */
+            }
+
+            .menu-links a:last-child {
+                border-bottom: none; /* Rimuovi il divisore dall'ultimo link */
+            }
+
+            .menu-links.active {
+                display: flex; /* Mostra il menu quando attivo */
+            }
+
+            .logo {
+                    display: block; /* Mostra il logo al centro */
+                    position: absolute;
+                    left: 50%;
+                    transform: translateX(-50%); /* Centra il testo orizzontalmente */
+                    color: #333;
+                }
 
             nav a {
                 font-size: calc(3vmin + 1vmax);
@@ -251,12 +309,21 @@
 <body>
 
 <nav>
-    <a href="#home">Home</a>
+    <div class="menu-toggle" onclick="toggleMenu()">☰ </div><a href="#home" class="logo"> Il matrimonio di Sara e Matteo</a>
+    <div class="menu-links">
+        <a href="#home">Home</a>
+        <a href="#dettagli">Dettagli</a>
+        <a href="#come-arrivare">Come Arrivare</a>
+        <a href="#lista-nozze">Lista Nozze</a>
+        <a href="#countdown">Countdown</a>
+        <a href="#ci_sarai">Ci Sarai?</a>
+    </div>
+    <!-- <a href="#home">Home</a>
     <a href="#dettagli">Dettagli</a>
     <a href="#come-arrivare">Come Arrivare</a>
     <a href="#lista-nozze">Lista Nozze</a>
     <a href="#countdown">Countdown</a>
-    <a href="#ci_sarai">Ci sarai?</a>
+    <a href="#ci_sarai">Ci sarai?</a> -->
 </nav>
 <!-- 
 <section id="ghostnav" class="ghostnav">
@@ -372,6 +439,33 @@
 
     // Aggiorna il countdown ogni secondo
     setInterval(updateCountdown, 1000);
+</script>
+
+<script>
+    function toggleMenu() {
+        const menu = document.querySelector('.menu-links');
+
+        // Mostra o nasconde il menu
+        menu.classList.toggle('active');
+
+        // Se il menu è visibile, aggiungi un listener per chiudere cliccando fuori
+        if (menu.classList.contains('active')) {
+            document.addEventListener('click', closeMenuOnClickOutside);
+        } else {
+            document.removeEventListener('click', closeMenuOnClickOutside);
+        }
+    }
+
+    function closeMenuOnClickOutside(event) {
+        const menu = document.querySelector('.menu-links');
+        const toggleButton = document.querySelector('.menu-toggle');
+
+        // Controlla se il clic è stato fatto fuori dal menu o dal pulsante
+        if (!menu.contains(event.target) && !toggleButton.contains(event.target)) {
+            menu.classList.remove('active');
+            document.removeEventListener('click', closeMenuOnClickOutside); // Rimuove il listener
+        }
+    }
 </script>
 
 </body>
