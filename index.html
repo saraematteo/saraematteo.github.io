@@ -278,6 +278,10 @@
                 flex-direction: column; /* Cambia la disposizione verticale sui telefoni */
             }
 
+            section:nth-child(even) {
+                 flex-direction: column-reverse
+            }
+
             .home {
                 max-height: calc(1 * (100vh - 2vmin - 3vmax));
             }
@@ -466,6 +470,18 @@
             document.removeEventListener('click', closeMenuOnClickOutside); // Rimuove il listener
         }
     }
+
+    // Funzione per chiudere il menu quando si clicca su un link
+    function closeMenuOnLinkClick() {
+        const menu = document.querySelector('.menu-links');
+        menu.classList.remove('active'); // Nasconde il menu
+        document.removeEventListener('click', closeMenuOnClickOutside); // Rimuove il listener
+    }
+
+    // Aggiungi il listener ai link del menu
+    document.querySelectorAll('.menu-links a').forEach(link => {
+        link.addEventListener('click', closeMenuOnLinkClick);
+    });
 </script>
 
 </body>
