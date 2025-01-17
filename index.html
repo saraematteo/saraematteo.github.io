@@ -280,10 +280,12 @@
         @media (max-aspect-ratio: 1.05) {
             nav {
                 justify-content: space-between;
+                height: calc(3vh + 3vw);;
             }
 
             .menu-toggle {
                 display: block; /* Mostra il toggle su dispositivi mobili */
+                font-size: calc(2vh + 1vw);
             }
 
             .menu-links {
@@ -300,8 +302,9 @@
             }
 
             .menu-links a {
-                padding: 10px 0;
-                border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Divisori tra i link */
+                padding: 0px 0;
+                border-bottom: 0.3px solid rgba(0, 0, 0, 0.1); /* Divisori tra i link */
+                font-size: calc(2vh + 2vw);
             }
 
             .menu-links a:last-child {
@@ -315,13 +318,14 @@
             .logo {
                     display: block; /* Mostra il logo al centro */
                     position: absolute;
-                    left: 50%;
-                    transform: translateX(-50%); /* Centra il testo orizzontalmente */
+                    left: 25%;
+                    transform: translateX(+0%); /* Centra il testo orizzontalmente */
                     color: #333;
+                    font-size: calc(2vh + 1.5vw);
                 }
 
             nav a {
-                font-size: calc(3vmin + 1vmax);
+                font-size: calc(2vh + 2vw);
                 margin: 0 .5vmin;
             }
 
@@ -334,11 +338,12 @@
             }
 
             .home {
-                max-height: calc(1 * (100vh - 2vmin - 3vmax));
+                margin-top: calc(3vh + 3vw);
+                max-height: calc(1 * (100vh - 3vmin - 3vmax));
             }
 
             .home img {
-                max-height: 50%;
+                max-height: 45%;
             }
 
             section img {
@@ -351,6 +356,11 @@
             section .content {
                 max-width: 100%; /* Riduci la larghezza del testo su schermi piccoli */
                 justify-content: center; /* Centra il testo orizzontalmente */
+            }
+
+            section p {
+                font-size: calc(2vh + 1.8vw); /* Testo leggibile */
+                line-height: calc(2vh + 1.8vw);
             }
 
             .content br {
@@ -446,21 +456,22 @@
     <img src="come_arrivare.jpeg" alt="Marocco 2024">
     <div class="content">
         <h2>Come Arrivare</h2>
-        <p>Il Castello di Rocca d'Ajello è a Camerino (MC), nelle Marche. </p>
-        <p>Come vale per quasi ogni castello che si rispetti arrivarci non è semplicissimo!</p>
-        <p>La strada è tortuosa e percorribile solo in cavallo, carrozza o automobile.</p>
+        <p>Il Castello di Rocca d'Ajello è a Camerino (MC). </p>
+        <p>Come per quasi ogni castello che si rispetti arrivare non è semplice!</p>
+        <p>La strada è tortuosa e percorribile solo a cavallo, in carrozza o con l'automobile.</p>
 
-        <p>Organizzeremo anche qualche trasporto per chi arriva da fuori, contattateci per i dettagli.</p>
+        <p>Organizzeremo un bus con partenza da <a href="https://maps.app.goo.gl/HcgaeicHPkasX2SFA" target="_blank">Civitanova Marche</a>, contattateci per i dettagli.</p>
         
-        <p><a href="https://maps.app.goo.gl/3Cy71Ro7fiGTa94P6" target="_blank">Castello di Rocca d'Ajello <br> 62032 Camerino, Macerata</a></p>
+        <p><a href="https://maps.app.goo.gl/3Cy71Ro7fiGTa94P6" target="_blank">Castello di Rocca d'Ajello</a></p>
+        <p><a href="https://maps.app.goo.gl/3Cy71Ro7fiGTa94P6" target="_blank">62032 Camerino, Macerata</a></p>
     </div>
 </section>
 
 <section id="dove-alloggiare" class="hero">
     <div class="content">
         <h2>Dove alloggiare</h2>
-        <p>Delle navette porteranno da Civitanova Marche (MC) alla location del matrimonio. Stay tuned!</p>
         <p>Contattate l'<a href="https://www.hotelpalace.biz/" target="_blank">Hotel Palace</a> o l'<a href="https://www.miramarecivitanova.com/" target="_blank">Hotel Miramare</a> di Civitanova che vi offriranno delle tariffe scontate.</p>
+        <p>Da lì potrete raggiungere la location del matrimonio in auto o con i bus che organizzeremo. Stay tuned!</p>
     </div>
     <img src="dove_alloggiare_1.jpeg" alt="Colombia, 2018">
 </section>
