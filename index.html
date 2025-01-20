@@ -228,7 +228,12 @@
 
         section p {
             font-size: calc(2vh + 1vw); /* Testo leggibile */
-            line-height: calc(2vh + 1vw);
+            line-height: calc(2vh + 1vw + 4pt);
+        }
+
+        section p2 {
+            font-size: calc(2vh + 1vw); /* Testo leggibile */
+            line-height: calc(2vh + 1vw + 4pt);
         }
 
         @media (max-aspect-ratio: 1000){
@@ -360,13 +365,18 @@
 
             section p {
                 font-size: calc(2vh + 1.8vw); /* Testo leggibile */
-                line-height: calc(2vh + 1.8vw);
+                line-height: calc(2vh + 1.8vw + 2pt);
+            }
+
+            section p2 {
+                font-size: calc(2vh + 1vw); /* Testo leggibile */
+                line-height: calc(2vh + 1.8vw + 1pt);
             }
 
             .content br {
                display: block;
                content: "";
-               margin-bottom: 2vh;
+               margin-bottom: 1vh;
             }
         }
 
@@ -425,14 +435,14 @@
     <img src="mumbai_2023.jpg" alt="Mumbai, 2023">
     <div class="content">
         <h2>Sara & Matteo</h2>
-        <p>Ci sposiamo!</p>
-        <p>14 Giugno 2025</p>
-        <p>Rocca D'Ajello, Camerino (MC)</p>
+        <p><strong>Ci sposiamo!</strong></p>
+        <p><strong>14 Giugno 2025</strong></p>
+        <p><strong>Rocca D'Ajello, Camerino (MC)</strong></p>
         <br>
 <!--         <p>Ciao! Hello! Hola! Hallo! Tere! Oi! Merhaba! Bella fra!</p>
         <p>Ebbene sì, ci sposiamo!</p> -->
 <!--         <p>Chi ce lo fa fare? Nessuno, ma con questa scusa vogliamo fare una grande festa e vogliamo che voi ne siate parte!</p> -->
-        <p>La nostra storia ci ha portato fino a qui e vogliamo celebrare e festeggiare con voi che ci avete accompagnato nel nostro viaggio. Grazie!</p>
+        <p>La nostra storia ci ha portato fino a qui e vogliamo celebrare e festeggiare con voi che ci avete accompagnato nel nostro viaggio. <strong>Grazie!</strong></p>
 <!--         <p>Il matrimonio sarà in un'unica location: al castello di Rocca d'Ajello, a Camerino, nelle Marche, perciò consigliamo di organizzarsi per tempo con gli spostamenti: vedi la sezione come arrivare per altre informazioni.</p> -->
         <p>Nella sezione <a href="#ci_sarai">RSVP</a> potete confermare la presenza, per favore fateci sapere appena possibile.<!-- appena saprai così che possiamo pelare il numero giusto di patate. --></p>
         <br>
@@ -456,14 +466,14 @@
     <img src="marocco_2024.jpeg" alt="Marocco 2024">
     <div class="content">
         <h2>Come Arrivare</h2>
-        <p>Il Castello di Rocca d'Ajello è a Camerino (MC). </p>
+        <p>Il <a href="https://maps.app.goo.gl/3Cy71Ro7fiGTa94P6" target="_blank">Castello di Rocca d'Ajello</a> è a Camerino (MC). </p>
         <p>Come per quasi ogni castello che si rispetti arrivare non è semplice!</p>
         <p>La strada è tortuosa e percorribile solo a cavallo, in carrozza o con l'automobile.</p>
 
         <p>Organizzeremo un bus con partenza da <a href="https://maps.app.goo.gl/HcgaeicHPkasX2SFA" target="_blank">Civitanova Marche</a>, contattateci per i dettagli.</p>
         
-        <p><a href="https://maps.app.goo.gl/3Cy71Ro7fiGTa94P6" target="_blank">Castello di Rocca d'Ajello</a></p>
-        <p><a href="https://maps.app.goo.gl/3Cy71Ro7fiGTa94P6" target="_blank">62032 Camerino, Macerata</a></p>
+        <!-- <p><a href="https://maps.app.goo.gl/3Cy71Ro7fiGTa94P6" target="_blank">Castello di Rocca d'Ajello</a></p>
+        <p><a href="https://maps.app.goo.gl/3Cy71Ro7fiGTa94P6" target="_blank">62032 Camerino, Macerata</a></p> -->
     </div>
 </section>
 
@@ -482,11 +492,12 @@
         <h2>Lista Nozze</h2>
         <p>Il regalo più grande è la vostra presenza...</p>
         <p>Ma anche un viaggio non è male!</p>
-        <p>(La foto di questa sezione infatti viene dal futuro)</p>
+        <p>(La foto di questa sezione viene dal futuro)</p>
         <br>
         <p><strong>Per contribuire al nostro viaggio di nozze:</strong></p>
-        <p><strong>IBAN:</strong> IT87S0347501605CC0012822426</p>
-        <p><strong>Intestato a:</strong> Matteo Bruno e Sara Belluccini</p>
+        <p2><strong>IBAN:</strong> IT87S0347501605CC0012822426</p2>
+        <p><strong>Intestato a:</strong> </p>
+        <p>Matteo Bruno e Sara Belluccini</p>
     </div>
 </section>
 
