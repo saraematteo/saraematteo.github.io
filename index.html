@@ -417,7 +417,7 @@
         <a href="#come-arrivare">Come arrivare</a>
         <a href="#dove-alloggiare">Dove alloggiare</a>
         <a href="#lista-nozze">Lista nozze</a>
-        <a href="#countdown">Countdown</a>
+        <a href="#countdown">Il grande giorno</a>
         <a href="#ci_sarai">RSVP</a>
     </div>
     <!-- <a href="#home">Home</a>
@@ -467,10 +467,9 @@
     <div class="content">
         <h2>Come Arrivare</h2>
         <p>Il <a href="https://maps.app.goo.gl/3Cy71Ro7fiGTa94P6" target="_blank">Castello di Rocca d'Ajello</a> è a Camerino (MC). </p>
-        <p>Come per quasi ogni castello che si rispetti arrivare non è semplice!</p>
+        <p>Come ogni castello che si rispetti, arrivarci non è semplice!</p>
         <p>La strada è tortuosa e percorribile solo a cavallo, in carrozza o con l'automobile.</p>
-
-        <p>Organizzeremo un bus con partenza da <a href="https://maps.app.goo.gl/HcgaeicHPkasX2SFA" target="_blank">Civitanova Marche</a>, contattateci per i dettagli.</p>
+        <p>Organizzeremo un bus da <a href="https://maps.app.goo.gl/HcgaeicHPkasX2SFA" target="_blank">Civitanova Marche</a>, contattateci per i dettagli o segnatelo sul <a href="#RSVP">modulo di conferma</a>.</p>
         
         <!-- <p><a href="https://maps.app.goo.gl/3Cy71Ro7fiGTa94P6" target="_blank">Castello di Rocca d'Ajello</a></p>
         <p><a href="https://maps.app.goo.gl/3Cy71Ro7fiGTa94P6" target="_blank">62032 Camerino, Macerata</a></p> -->
@@ -480,8 +479,10 @@
 <section id="dove-alloggiare" class="hero">
     <div class="content">
         <h2>Dove alloggiare</h2>
-        <p>Contattate l'<a href="https://www.hotelpalace.biz/" target="_blank">Hotel Palace</a> o l'<a href="https://www.miramarecivitanova.com/" target="_blank">Hotel Miramare</a> di Civitanova che vi offriranno delle tariffe scontate.</p>
-        <p>Da lì potrete raggiungere la location del matrimonio in auto o con i bus che organizzeremo. Stay tuned!</p>
+        <p>Intorno alla <a href="https://www.google.com/maps/search/hotel/@43.1884357,13.0401744,13z/data=!4m4!2m3!5m2!5m1!1s2025-06-14?entry=ttu&g_ep=EgoyMDI1MDEyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank">location</a> ci sono molti hotel e airbnb a pochi chilometri.</p>
+        <p>Abbiamo però previsto tariffe scontate a <a href="https://maps.app.goo.gl/HcgaeicHPkasX2SFA" target="_blank">Civitanova Marche</a>, per chi volesse. Contattateci e vi indirizzeremo verso gli hotel convenzionati <strong>(fino a esaurimento posti)</strong>.</p>
+        <!-- <p>Contattate l'<a href="https://www.hotelpalace.biz/" target="_blank">Hotel Palace</a> o l'<a href="https://www.miramarecivitanova.com/" target="_blank">Hotel Miramare</a> di Civitanova che vi offriranno delle tariffe scontate.</p> -->
+        <p>Da lì potrete raggiungere la location del matrimonio in auto o con <a href="#come-arrivare">i bus organizzati</a>.</p>
     </div>
     <img src="colombia_2018.jpeg" alt="Colombia, 2018">
 </section>
@@ -508,6 +509,8 @@
             <p>Calcolando il tempo rimanente...</p>
         </div>
         <p>(No pressure...!)</p>
+        <br>
+        <p><a href="partecipazione.png" download target="_blank">Partecipazione e programma</a></p>
     </div>
     <img src="barcellona_2024.jpeg" alt="Barcellona, 2024">
 </section>
@@ -530,7 +533,7 @@
 <script>
     // Funzione per calcolare il tempo rimanente
     function updateCountdown() {
-        const weddingDate = new Date("June 14, 2025 17:00:00")
+        const weddingDate = new Date("June 14, 2025 17:00:00 GMT+0100")
         const weddingTime = weddingDate.getTime();
         const now = new Date()
         const nowTime = now.getTime();
@@ -541,18 +544,22 @@
             months = weddingDate.getMonth() - now.getMonth();
         }
         days = weddingDate.getDate() - now.getDate()
-        if (days < 0) {
-            months -= 1; // Correggi il mese se il giorno attuale è maggiore
-            days = days + 31
-        }
         const timeRemaining = weddingTime - nowTime;
 
+        const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+        if ((days < 0) || ((days == 0) && ((hours >= 17))))/* || ((hours == 17) && ((minutes < 0) || ((minutes == 0) && (seconds < 0))))))) */{
+            months -= 1; // Correggi il mese se il giorno attuale è maggiore
+            if (hours >= 17){
+                days = days + 30
+            } else {
+                days = days + 31
+            }
+        }
+        
         if (timeRemaining > 0) {
             /*const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));*/
-            const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-
             document.getElementById("countdown-timer").innerHTML = 
                 `<p>${months} mesi, ${days} giorni, ${hours} ore, ${minutes} minuti e ${seconds} secondi</p>`;
         } else {
