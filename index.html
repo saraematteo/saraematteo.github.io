@@ -551,11 +551,10 @@
         const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
         if ((days < 0) || ((days == 0) && ((hours >= 17))))/* || ((hours == 17) && ((minutes < 0) || ((minutes == 0) && (seconds < 0))))))) */{
             months -= 1; // Correggi il mese se il giorno attuale è maggiore
-            if (hours >= 17){
-                days = days + 30
-            } else {
-                days = days + 31
-            }
+            days = days + 31
+        }
+        if (hours >= 17) {
+            days = days - 1
         }
         
         if (timeRemaining > 0) {
